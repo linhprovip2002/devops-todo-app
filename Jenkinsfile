@@ -1,11 +1,6 @@
 pipeline {
-  agent {
-    docker {
-      image 'node:lts-alpine'
-      args '-p 3000:3000'
-    }
-
-  }
+  agent any
+  
   stages {
     stage('Test') {
       steps {
@@ -19,11 +14,19 @@ pipeline {
       }
     }
 
-    stage('Run') {
+    stage('Open Image') {
       steps {
-        sh 'npm start'
+        // Replace 'image.jpg' with the name of your image file
+        sh 'xdg-open aaa.jpg 
       }
     }
 
+    stage('Run') {
+      steps {
+        
+        sh 'ls -la'
+        echo 'Finish'
+      }
+    }
   }
 }
