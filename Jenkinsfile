@@ -14,13 +14,6 @@ pipeline {
       }
     }
 
-    stage('Open Image') {
-      steps {
-        // Replace 'image.jpg' with the name of your image file
-        sh 'xdg-open aaa.jpg 
-      }
-    }
-
     stage('Run') {
       steps {
         
