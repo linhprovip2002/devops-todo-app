@@ -23,13 +23,7 @@ pipeline {
       }
     }
 
-    stage('Open todo.ejs in Views Folder') {
-      steps {
-        dir('views') {
-          sh 'xdg-open todo.ejs || open todo.ejs'
-        }
-      }
-    }
+
 
     stage('Run') {
       steps {
