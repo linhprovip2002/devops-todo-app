@@ -10,14 +10,27 @@ pipeline {
 
     stage('Install dependency') {
       steps {
-        sh 'npm install'
+        script {
+          try {
+            sh 'npm install'
+          } catch (Exception e) {
+            echo 'npm is not found or npm install failed'
+            error('Stopping the build due to npm installation failure.')
+          }
+        }
+      }
+    }
+
+    stage('Open todo.ejs in Views Folder') {
+      steps {
+        dir('views') {
+          sh 'xdg-open todo.ejs || open todo.ejs'
+        }
       }
     }
 
     stage('Run') {
       steps {
-        
-        sh 'ls -la'
         echo 'Finish'
       }
     }
