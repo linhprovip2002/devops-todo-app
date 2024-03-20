@@ -8,15 +8,17 @@ pipeline {
       }
     }
 
-    stage('Install dependency') {
+  stage('List Files in root Folder') {
       steps {
-        script {
-          try {
-            sh 'npm install'
-          } catch (Exception e) {
-            echo 'npm is not found or npm install failed'
-            error('Stopping the build due to npm installation failure.')
-          }
+        dir('views') {
+          sh 'ls -la'
+        }
+      }
+    }
+    stage('List Files in Views Folder') {
+      steps {
+        dir('views') {
+          sh 'ls -la'
         }
       }
     }
